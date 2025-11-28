@@ -1,4 +1,4 @@
-# 🤖 Real-Time Vision-Language Indoor Navigation System
+# 🤖 Real-Time Vision-Language Indoor Navigation Assistant
 
 ## 🌟 Overview
 
