@@ -103,22 +103,43 @@ Upon successful execution, the output will display the public Ngrok URL:
 
 ## 📱 Usage
 
-1.  **Access the Client:** Open the **PUBLIC URL** in the browser of your mobile device (recommended: Safari on iOS, Chrome on Android).
-2.  **Enable Voice:** Tap the **"🎙 Enable Voice"** button and grant microphone permission. This also prepares the system for navigation.
-3.  **Start Video:** Tap the **"🎥 Start"** button and grant camera permission. The video stream will start sending frames to the VLM server.
-4.  **Set Goal:**
-      * **Voice:** Say a command like "Direct me to the office door."
+1.  **Access the Client:** Open the **PUBLIC URL** in the browser of your mobile device (e.g. Safari on iOS, Chrome on Android).
+2.  **Enable Voice:** Tap the **"🎙 Enable Voice"** button and grant microphone permission.
+3.  **Set Goal:**
+      * **Voice:** Say a command like "Direct me to the office door." to set your destination.
+4.  **Start Navigation:** Say "Start" and the video stream will start sending frames to the VLM server.
 5.  **Receive Guidance:** The system will provide visual (HUD) and auditory (TTS) instructions on the next steps (e.g., "Step forward," "Your destination is ahead on your left").
 
 ## 📂 Project Structure
 
-| File | Description |
+您提供的这个项目结构是一个更清晰、更符合 FastAPI 最佳实践的模块化结构。我将根据这个新的结构重写 `README.md` 中的 **Project Structure** 部分，并保持英文。
+
+---
+
+## 📂 Project Structure
+
+The project is organized into a modular structure following standard Python package conventions, built around the core application (`app/`).
+
+| File/Directory | Description |
 | :--- | :--- |
-| `app/main.py` | The main FastAPI server entry point. Sets up Ngrok, defines API routes (`/infer`, `/asr`, `/`), and serves the front-end client. |
-| `run_video_demo_correct.py` | Contains the core VLM logic, including pre-veto checks, scene hint building, and final action decision-making. |
-| `api_client_openai_compat.py` | Handles communication with the DashScope/Qwen-VL API using the OpenAI compatibility layer. |
-| `requirements.txt` | Lists all necessary Python dependencies. |
-| `.env` | Configuration file for storing sensitive API keys and tokens. |
+| `IndoorNav/` | **Project Root Directory.** |
+| `├── .gitignore` 
+| `├── requirements.txt`
+| `├── README.md`
+| `└── app/` | **Main Python Package** (The core application logic). |
+| `    ├── main.py` | **Application Entry Point.** Initializes the FastAPI app, sets up Ngrok, and starts the Uvicorn server. |
+| `    ├── core/` | **Core Configuration and State Management.** |
+| `    │   ├── config.py` | Handles reading and loading environment variables. |
+| `    │   ├── state.py` | Manages global application states (e.g., `CURRENT_GOAL`, temporal streak counts). |
+| `    │   └── prompts.py` | Contains all large language model prompt templates (e.g., VLM prompts, ASR context prompts). |
+| `    ├── services/` | **Business Logic and External Services Integration.** |
+| `    │   ├── asr.py` | Contains the logic for Automatic Speech Recognition (e.g., Whisper API integration). |
+| `    │   ├── vlm.py` | Integrates with the Vision-Language Model (e.g., Qwen-VL via OpenAI-compatible API). |
+| `    │   └── vision.py` | Contains Computer Vision (CV) logic, such as geometric pre-veto checks and image processing. |
+| `    ├── routers/` | **API Endpoint Definitions.** |
+| `    │   └── navigation.py` | Defines the REST API endpoints, including `/infer` (VLM inference) and `/asr` (voice command). |
+| `    └── templates/` | **Static Web Client.** |
+| `        └── index.html` | The HTML/JavaScript client page for mobile camera streaming and voice interaction. |
 
 ## 🙏 Acknowledgements
 
@@ -131,4 +152,4 @@ This project utilizes:
 
 ## 📄 License
 
-[Place your license information here, e.g., MIT License]
+This project is licensed under the **MIT License**.
