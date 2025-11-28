@@ -112,12 +112,6 @@ Upon successful execution, the output will display the public Ngrok URL:
 
 ## 📂 Project Structure
 
-您提供的这个项目结构是一个更清晰、更符合 FastAPI 最佳实践的模块化结构。我将根据这个新的结构重写 `README.md` 中的 **Project Structure** 部分，并保持英文。
-
----
-
-## 📂 Project Structure
-
 The project is organized into a modular structure following standard Python package conventions, built around the core application (`app/`).
 
 | File/Directory | Description |
