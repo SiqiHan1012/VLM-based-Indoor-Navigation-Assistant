@@ -2,7 +2,7 @@
 
 ## 🌟 Overview
 
-This project implements a real-time, voice-controlled indoor navigation system using a combination of a fast-API server, a Vision-Language Model (VLM) for perception, and an Automatic Speech Recognition (ASR) system for command input.
+This project implements a real-time, voice-controlled indoor navigation system for blind/visually impaired people using a combination of a fast-API server, a Vision-Language Model (VLM, Qwen3-VL) for perception, and an Automatic Speech Recognition (ASR, OpenAI-Whisper) system for command input.
 
 The server is designed for quick deployment, particularly on platforms like Google Colab using Ngrok, allowing a mobile device to act as the camera/microphone input and the navigation guidance display. The system provides real-time "next action" instructions (e.g., "Step forward," "Keep left") and voice feedback to guide a user towards a specified goal.
 
@@ -73,7 +73,7 @@ import os
 from dotenv import load_dotenv
 
 # --- Set your project root path ---
-PROJECT_DIR = "/content/drive/MyDrive/2025Fall/ECE1724H/IndoorNav" 
+PROJECT_DIR = "/content/drive/MyDrive/IndoorNav" 
 os.chdir(PROJECT_DIR) 
 print(f"Current working directory set to: {os.getcwd()}")
 
@@ -108,7 +108,6 @@ Upon successful execution, the output will display the public Ngrok URL:
 3.  **Start Video:** Tap the **"🎥 Start"** button and grant camera permission. The video stream will start sending frames to the VLM server.
 4.  **Set Goal:**
       * **Voice:** Say a command like "Direct me to the office door."
-      * **Manual:** You can implement a manual text input for the goal (if your HTML supports it).
 5.  **Receive Guidance:** The system will provide visual (HUD) and auditory (TTS) instructions on the next steps (e.g., "Step forward," "Your destination is ahead on your left").
 
 ## 📂 Project Structure
