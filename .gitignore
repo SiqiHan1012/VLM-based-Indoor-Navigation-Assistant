@@ -1,0 +1,12 @@
+# 排除敏感文件
+.env
+
+# 排除 Python 运行时文件
+__pycache__/
+*.pyc
+venv/
+.ipynb_checkpoints/
+*.log
+
+# 排除 Colab/Drive 临时文件
+# 如果您在 Colab 中产生了日志或缓存，请添加在此处
