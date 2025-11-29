@@ -39,7 +39,6 @@ def run_vlm_inference(pil_image: Image.Image, prompt: str):
         )
         raw_text = resp.choices[0].message.content
         
-        # 尝试解析 JSON
         start = raw_text.find("{")
         end = raw_text.rfind("}")
         if start != -1 and end != -1:
@@ -49,4 +48,5 @@ def run_vlm_inference(pil_image: Image.Image, prompt: str):
         
     except Exception as e:
         print(f"[VLM Error] {e}")
+
         return str(e), {}
