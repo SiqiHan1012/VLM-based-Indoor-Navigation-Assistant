@@ -1,7 +1,6 @@
 import time
 import os
 
-# 全局状态管理
 class GlobalState:
     def __init__(self):
         # Initial goal from environment or empty
@@ -24,5 +23,5 @@ class GlobalState:
     def get_goal(self):
         return self.CURRENT_GOAL
 
-# 单例实例
+
 nav_state = GlobalState()
